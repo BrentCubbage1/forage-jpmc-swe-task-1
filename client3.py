@@ -57,9 +57,14 @@ if __name__ == "__main__":
         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
 
         """ ----------- Update to get the ratio --------------- """
+        #This makes a dictionary to store our stock and prices.
+        #I can think of a dictionary as a Map (key/value pair).
+        #Allows to store the Key (stock) to a value (price)
         prices = {}
         for quote in quotes:
+            #for each quote, we are assigning these 4 variables with the getDataPoint method.
             stock, bid_price, ask_price, price = getDataPoint(quote)
+            #Setting our key/value pair in dictionary.
             prices[stock] = price
             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
 
